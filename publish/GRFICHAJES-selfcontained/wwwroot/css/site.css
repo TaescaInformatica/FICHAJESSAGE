@@ -1,0 +1,52 @@
+:root {
+  --sage-primary: #6b4a2d;
+  --sage-primary-dark: #4a321f;
+  --wood-amber: #d9a15f;
+  --wood-gold: #f2c879;
+  --forest: #2f5d45;
+  --forest-dark: #203f30;
+  --ink: #201915;
+  --muted: #6f6258;
+  --border: #e3d6c6;
+  --surface: #fffaf2;
+  --page: #f4efe7;
+  --danger: #b42318;
+  --success: #067647;
+}
+
+html {
+  min-height: 100%;
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  background-color: var(--page);
+  background-image:
+    linear-gradient(rgba(244, 239, 231, 0.9), rgba(244, 239, 231, 0.92)),
+    url("../img/wood-grain.png");
+  background-size: auto, cover;
+  background-attachment: fixed;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+a {
+  color: var(--forest);
+}
+
+img {
+  max-width: 100%;
+}
+
+.table-responsive {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+@media (max-width: 575.98px) {
+  html {
+    font-size: 15px;
+  }
+}
