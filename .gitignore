@@ -1,0 +1,33 @@
+# Visual Studio temporary files, build results, and
+# user-specific files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build folders
+bin/
+obj/
+
+# Publish output
+publish/
+
+# Rider
+.idea/
+
+# Frontend node modules and build output
+frontend/node_modules/
+frontend/dist/
+
+# Local application settings
+appsettings.*.json
+appsettings.json
+
+# Temporary files
+*.log
+*.tmp
+
+# Others
+*.pdb
+*.cache

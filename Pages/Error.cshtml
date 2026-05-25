@@ -1,0 +1,24 @@
+@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<section class="error-page">
+    <div class="app-panel">
+        <p class="page-eyebrow">Incidencia</p>
+        <h1>No se ha podido completar la operacion</h1>
+        <p class="error-copy">
+            Se ha registrado el error para que pueda revisarlo el administrador. Vuelve a intentarlo en unos minutos.
+        </p>
+
+        @if (Model.ShowRequestId)
+        {
+            <p class="request-id">
+                Referencia: <code>@Model.RequestId</code>
+            </p>
+        }
+
+        <a class="btn btn-primary" asp-page="/Index">Volver al fichaje</a>
+    </div>
+</section>

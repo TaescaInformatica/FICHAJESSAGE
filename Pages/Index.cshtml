@@ -1,0 +1,55 @@
+@page
+@model FichajeTAESCA.Pages.IndexModel
+@{
+    ViewData["Title"] = "Control horario";
+}
+
+<section class="fichaje-page">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8 col-xl-6">
+            <section class="fichaje-card">
+                <div class="wood-badge" aria-hidden="true"></div>
+
+                <div class="page-heading text-center">
+                    <p class="page-eyebrow">Entrada y salida</p>
+                    <h1>Registro de fichaje</h1>
+                    <p class="page-help">Introduce tu codigo de empleado y pulsa el boton.</p>
+                </div>
+
+                @if (!string.IsNullOrWhiteSpace(Model.Mensaje))
+                {
+                    <div class="alert app-alert @(Model.EsError ? "app-alert-danger" : "app-alert-success")" role="alert">
+                        <span class="alert-marker" aria-hidden="true"></span>
+                        <span>@Model.Mensaje</span>
+                    </div>
+                }
+
+                <form method="post" class="fichaje-form">
+                    <div>
+                        <label asp-for="CodigoOperario" class="form-label"></label>
+                        <input asp-for="CodigoOperario"
+                               class="form-control form-control-lg employee-code-input"
+                               inputmode="numeric"
+                               autocomplete="off"
+                               autocapitalize="none"
+                               autofocus />
+                        <span asp-validation-for="CodigoOperario" class="text-danger validation-message"></span>
+                    </div>
+
+                    <div class="form-check app-check">
+                        <input asp-for="Teletrabajo" class="form-check-input" />
+                        <label asp-for="Teletrabajo" class="form-check-label"></label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg submit-button">
+                        Registrar fichaje
+                    </button>
+                </form>
+            </section>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,75 @@
+@inject Microsoft.Extensions.Options.IOptions<EmpresaOptions> EmpresaConfiguration
+@{
+    var empresa = EmpresaConfiguration.Value;
+    string brandName = !string.IsNullOrWhiteSpace(empresa.NombreComercial)
+        ? empresa.NombreComercial
+        : (!string.IsNullOrWhiteSpace(empresa.Nombre) ? empresa.Nombre : "Control horario");
+    string companyName = !string.IsNullOrWhiteSpace(empresa.Nombre) ? empresa.Nombre : brandName;
+    string primaryColor = !string.IsNullOrWhiteSpace(empresa.ColorPrincipal) ? empresa.ColorPrincipal : "#00A376";
+    string? logoUrl = !string.IsNullOrWhiteSpace(empresa.LogoUrl) ? Url.Content(empresa.LogoUrl) : null;
+    string brandInitial = brandName.Trim().Length > 0 ? brandName.Trim()[0].ToString().ToUpperInvariant() : "F";
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - @brandName</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sage-theme.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FichajeTAESCA.styles.css" asp-append-version="true" />
+</head>
+<body style="--sage-primary: @primaryColor;">
+    <header class="app-header">
+        <nav class="navbar navbar-expand-sm app-navbar" aria-label="Navegacion principal">
+            <div class="container-fluid px-3 px-lg-4">
+                <a class="navbar-brand app-brand" asp-area="" asp-page="/Index">
+                    <span class="brand-mark" aria-hidden="true">
+                        @if (!string.IsNullOrWhiteSpace(logoUrl))
+                        {
+                            <img src="@logoUrl" alt="" />
+                        }
+                        else
+                        {
+                            <span>@brandInitial</span>
+                        }
+                    </span>
+                    <span class="brand-copy">
+                        <span class="brand-title">@brandName</span>
+                        <span class="brand-subtitle">@companyName</span>
+                    </span>
+                </a>
+
+                <button class="navbar-toggler app-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation"
+                        aria-controls="mainNavigation" aria-expanded="false" aria-label="Abrir navegacion">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse app-navbar-collapse" id="mainNavigation">
+                    <div class="ms-sm-auto header-helper">Registro diario</div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="app-shell container-fluid px-3 px-lg-4">
+        <main role="main" class="app-main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="app-footer">
+        <div class="container-fluid px-3 px-lg-4">
+            <span>@companyName</span>
+            <span>Control de fichajes</span>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

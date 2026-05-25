@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  background: #f7f1e7;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: #1f1f1f;
+  background: #f7f1e7;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+@layer components {
+  .attendance-background {
+    background:
+      radial-gradient(circle at top, rgba(220, 235, 221, 0.95) 0%, rgba(220, 235, 221, 0) 35%),
+      radial-gradient(circle at 82% 92%, rgba(183, 139, 92, 0.22) 0%, rgba(183, 139, 92, 0) 34%),
+      linear-gradient(135deg, #f7f1e7 0%, #fffcf6 52%, #eee1d1 100%);
+  }
+
+  .wood-mark {
+    position: relative;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)),
+      repeating-linear-gradient(12deg, rgba(74, 50, 31, 0.18) 0 2px, transparent 2px 12px),
+      radial-gradient(circle at 25% 30%, #d5aa78 0%, transparent 34%),
+      linear-gradient(135deg, #b98d62 0%, #8f623d 100%);
+  }
+
+  .wood-mark::before {
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 18px;
+    content: "";
+  }
+
+  .wood-mark::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0));
+    content: "";
+  }
+}
